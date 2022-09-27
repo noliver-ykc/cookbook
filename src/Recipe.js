@@ -1,10 +1,18 @@
 import React from 'react'
 
-export default function Recipe() {
+export default function Recipe(props) {
+  // using destructuring on line 3 will crowd the text, so placing in a variable here
+  const {
+    name,
+    cookTime,
+    servings,
+    instructions
+  } = props
+
   return (
     <div>
       <div className="recipe-header">
-        <h3 className='recipe-title'>Plain Chickem</h3>
+        <h3 className='recipe-title'>{name}</h3>
         <div className="btns">
           <button>Edit</button>
           <button>Delete</button>
@@ -12,18 +20,16 @@ export default function Recipe() {
       </div>
       <div className="rows">
         <span>Cook Time:</span>
-        <span>1:45</span>
+        <span>{cookTime}</span>
       </div>
       <div className="rows">
         <span>Servings:</span>
-        <span>3</span>
+        <span>{servings}</span>
       </div>
       <div className="rows">
         <span>Instructions:</span>
         <div className="recipe-rows-instructions">
-          1. Put salt on chicken
-          2. put chicken in oven
-          3. eat chicken
+          {instructions}
         </div>
       </div>
     </div>

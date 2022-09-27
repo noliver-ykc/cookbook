@@ -7,6 +7,8 @@ export default function IngredientList({ingredients}) {
     return <Ingredient key={ingredient.id} {...ingredient} />
   })
   return (
-    <div>{ingredientElements}</div>
+    <div className='ingredient-grid'>
+      {ingredientElements}
+    </div>
   )
 }

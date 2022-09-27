@@ -12,31 +12,31 @@ export default function Recipe(props) {
   } = props
 
   return (
-    <div>
+    <div className='recipe'>
       <div className="recipe-header">
         <h3 className='recipe-title'>{name}</h3>
         <div className="btns">
-          <button>Edit</button>
-          <button>Delete</button>
+          <button className='btn btn--primary mr-1'>Edit</button>
+          <button className='btn btn--danger' >Delete</button>
         </div>
       </div>
-      <div className="rows">
-        <span>Cook Time:</span>
-        <span>{cookTime}</span>
+      <div className="recipe_row">
+        <span className='recipe-label'>Cook Time:</span>
+        <span className='recipe-value'>{cookTime}</span>
       </div>
-      <div className="rows">
-        <span>Servings:</span>
-        <span>{servings}</span>
+      <div className="recipe_row">
+        <span className='recipe-label'>Servings:</span>
+        <span className='recipe-value'>{servings}</span>
       </div>
-      <div className="rows">
-        <span>Instructions:</span>
-        <div className="recipe-rows-instructions">
+      <div className="recipe_row">
+        <span className='recipe-label'>Instructions:</span>
+        <div className='recipe-value recipe-instructions recipe-value-indent'>
           {instructions}
         </div>
       </div>
-      <div className="rows">
-        <span>Ingredients:</span>
-        <div className="recipe-rows-ingredients">
+      <div className="recipe_row">
+        <span className='recipe-label'>Ingredients:</span>
+        <div className='recipe-value  recipe-value-indent'>
           <IngredientList ingredients={ingredients}/>
         </div>
       </div>

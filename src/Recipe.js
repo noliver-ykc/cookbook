@@ -1,4 +1,5 @@
 import React from 'react'
+import IngredientList from './IngredientList'
 
 export default function Recipe(props) {
   // using destructuring on line 3 will crowd the text, so placing in a variable here
@@ -6,7 +7,8 @@ export default function Recipe(props) {
     name,
     cookTime,
     servings,
-    instructions
+    instructions,
+    ingredients
   } = props
 
   return (
@@ -30,6 +32,12 @@ export default function Recipe(props) {
         <span>Instructions:</span>
         <div className="recipe-rows-instructions">
           {instructions}
+        </div>
+      </div>
+      <div className="rows">
+        <span>Ingredients:</span>
+        <div className="recipe-rows-ingredients">
+          <IngredientList ingredients={ingredients}/>
         </div>
       </div>
     </div>

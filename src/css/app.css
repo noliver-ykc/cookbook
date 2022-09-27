@@ -4,6 +4,8 @@
 @import-normalize;
 @import 'recipe-list.css';
 @import 'buttons.css';
+@import 'recipe.css';
+@import 'ingredient-list.css';
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap');
 
 /* sets all default styles */
@@ -11,7 +13,7 @@
   font-family: 'Roboto Mono', monospace;
 }
 html {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 body {

@@ -1,9 +1,11 @@
+import React from "react";
+import RecipeList from "./RecipeList";
 
 
 function App() {
   return (
     <>
-    hello world
+    <RecipeList />
     </>
   );
 }

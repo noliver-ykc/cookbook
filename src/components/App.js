@@ -3,10 +3,15 @@ import RecipeList from './RecipeList';
 import { v4 as uuidv4 } from 'uuid'; // for pushing out supe runique id
 import '../css/app.css'
 
+export const RecipeContext = React.createContext()
+
 function App() {
   // defined at the app level so both our edit and list functionalities can access state
   const [recipes, setRecipes] = useState(sampleRecipes)
-
+  const recipeContextValue = {
+    handleRecipeAdd,
+    handleRecipeDelete
+  }
   function handleRecipeAdd() {
     const newRecipe = {
       id: uuidv4(),
@@ -26,11 +31,10 @@ function App() {
   }
 
   return (
-    <RecipeList
-      recipes={recipes}
-      handleRecipeAdd={handleRecipeAdd}
-      handleRecipeDelete={handleRecipeDelete}
-    />
+    <RecipeContext.Provider value ={recipeContextValue}>
+      <RecipeList recipes={recipes}
+      />
+    </RecipeContext.Provider>
   )
 }
 

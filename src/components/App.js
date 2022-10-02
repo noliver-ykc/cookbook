@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RecipeList from './RecipeList';
 import { v4 as uuidv4 } from 'uuid'; // for pushing out supe runique id
 import '../css/app.css'
 
 export const RecipeContext = React.createContext()
-
+const LOCAL_STORAGE_KEY = 'cookingWithReact.recipes'
 function App() {
   // defined at the app level so both our edit and list functionalities can access state
-  const [recipes, setRecipes] = useState(sampleRecipes)
+
+
+  // hooks are called in order so load then save is important
+  // load from local storage
+  const [recipes, setRecipes] = useState(() => {
+    const recipeJSON = localStorage.getItem(LOCAL_STORAGE_KEY)
+    if (recipeJSON == null) {
+      return sampleRecipes
+    } else {
+      return JSON.parse(recipeJSON)
+    }
+  })
+  // save our values to local storage
+  useEffect(() => {
+   console.log("hello save")
+   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes))
+  }, [recipes]) // [] is a dependency, whenever the component stored in this array changes, the effect takes place
+
+
+
   const recipeContextValue = {
     handleRecipeAdd,
     handleRecipeDelete

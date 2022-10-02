@@ -8,9 +8,7 @@ const LOCAL_STORAGE_KEY = 'cookingWithReact.recipes'
 function App() {
   // defined at the app level so both our edit and list functionalities can access state
 
-
-  // hooks are called in order so load then save is important
-  // load from local storage
+  // load our values from local
   const [recipes, setRecipes] = useState(() => {
     const recipeJSON = localStorage.getItem(LOCAL_STORAGE_KEY)
     if (recipeJSON == null) {

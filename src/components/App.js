@@ -1,12 +1,40 @@
-import React from 'react';
-import RecipeList from './RecipeList'
+import React, { useState } from 'react';
+import RecipeList from './RecipeList';
+import { v4 as uuidv4 } from 'uuid'; // for pushing out supe runique id
 import '../css/app.css'
 
 function App() {
+  // defined at the app level so both our edit and list functionalities can access state
+  const [recipes, setRecipes] = useState(sampleRecipes)
+
+  function handleRecipeAdd() {
+    const newRecipe = {
+      id: uuidv4(),
+      name: 'New',
+      servings: 1,
+      cookTime: '1:00',
+      instructions: 'Instr',
+      ingredients: [
+        { id: uuidv4(), name: 'Name', amount: '1 Tbs'}
+      ]
+    }
+    setRecipes([...recipes, newRecipe])
+  }
+
+  function handleRecipeDelete(id) {
+    setRecipes(recipes.filter(recipe => recipe.id !== id))
+  }
+
   return (
-    <RecipeList recipes={sampleRecipes} />
+    <RecipeList
+      recipes={recipes}
+      handleRecipeAdd={handleRecipeAdd}
+      handleRecipeDelete={handleRecipeDelete}
+    />
   )
 }
+
+
 
 const sampleRecipes = [
   {

@@ -4,11 +4,13 @@ import IngredientList from './IngredientList'
 export default function Recipe(props) {
   // using destructuring on line 3 will crowd the text, so placing in a variable here
   const {
+    id,
     name,
     cookTime,
     servings,
     instructions,
-    ingredients
+    ingredients,
+    handleRecipeDelete
   } = props
 
   return (
@@ -17,7 +19,12 @@ export default function Recipe(props) {
         <h3 className='recipe-title'>{name}</h3>
         <div className="btns">
           <button className='btn btn--primary mr-1'>Edit</button>
-          <button className='btn btn--danger' >Delete</button>
+          <button
+            className='btn btn--danger'
+            onClick={() => handleRecipeDelete(id)}
+          >
+            Delete
+          </button>
         </div>
       </div>
       <div className="recipe_row">

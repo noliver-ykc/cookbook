@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import IngredientList from './IngredientList'
+import { RecipeContext } from './App'
 
 export default function Recipe(props) {
   // using destructuring on line 3 will crowd the text, so placing in a variable here
+  const { handleRecipeDelete } = useContext(RecipeContext)
   const {
     id,
     name,
     cookTime,
     servings,
     instructions,
-    ingredients,
-    handleRecipeDelete
+    ingredients
   } = props
 
   return (

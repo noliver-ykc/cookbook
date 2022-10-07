@@ -7,10 +7,13 @@
 @import 'recipe.css';
 @import 'ingredient-list.css';
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap');
+@import 'recipe-edit.css';
 
 /* sets all default styles */
 *, *::before, *::after {
   font-family: 'Roboto Mono', monospace;
+  /* makes any width defined inside of prescending css an accumulation of all padding, margin etc */
+  box-sizing: border-box;
 }
 html {
   font-size: 20px;

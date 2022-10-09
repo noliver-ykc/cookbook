@@ -50,6 +50,7 @@ function App() {
         { id: uuidv4(), name: 'Name', amount: '1 Tbs'}
       ]
     }
+    setSelectedRecipeId(newRecipe.id)
     setRecipes([...recipes, newRecipe])
   }
 

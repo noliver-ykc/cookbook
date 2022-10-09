@@ -3,7 +3,7 @@ import RecipeIngredientEdit from './RecipeIngredientEdit'
 import { RecipeContext } from './App'
 
 export default function RecipeEdit({recipe}) {
-  const { handleRecipeChange } = useContext(RecipeContext)
+  const { handleRecipeChange, handleRecipeSelect } = useContext(RecipeContext)
 
   function handleChange(changes) {
     // taking everything from recipe and everything from changes but in a brand new obj
@@ -20,8 +20,14 @@ export default function RecipeEdit({recipe}) {
   return (
     <div className='recipe-edit'>
       <div className="rm-btn-container">
-        {/* uses html magic to build an x button thats perfectly center */}
-        <button className="btn recipe-edit-rm-btn">&times;</button>
+        {/* &times; uses html magic to build an x button thats perfectly center */}
+        <button
+          className="btn recipe-edit-rm-btn"
+          // changes selected recipe id to undefined and now no longer shows stuff
+          onClick={() => handleRecipeSelect(undefined)}
+        >
+          &times;
+        </button>
       </div>
       <div className="recipe-edit-details-grid">
           <label

@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import RecipeIngredientEdit from './RecipeIngredientEdit'
-import Ingredient from './Ingredient';
-
+import { RecipeContext } from './App'
 
 export default function RecipeEdit({recipe}) {
+  const { handleRecipeChange } = useContext(RecipeContext)
+
+  function handleChange(changes) {
+    // taking everything from recipe and everything from changes but in a brand new obj
+    // and overwrites the new obj with new info
+    // never alter props or state in react
+    handleRecipeChange(recipe.id, { ...recipe, ...changes })
+  }
   return (
     <div className='recipe-edit'>
       <div className="rm-btn-container">
@@ -21,6 +28,7 @@ export default function RecipeEdit({recipe}) {
             name='name'
             id="name"
             value={recipe.name}
+            onInput={e => handleChange({ name: e.target.value })}
             className="recipe-edit-input"
           />
 
@@ -34,6 +42,7 @@ export default function RecipeEdit({recipe}) {
             name='cookTime'
             id="cookTime"
             value={recipe.cookTime}
+            onInput={e => handleChange({ cookTime: e.target.value })}
             className="recipe-edit-input"
           />
 
@@ -48,6 +57,9 @@ export default function RecipeEdit({recipe}) {
             name='servings'
             id="servings"
             value={recipe.servings}
+            // e.target.value alwayys returns a str so must make int
+            // return empty str if to int NaN
+            onInput={e => handleChange({ servings: parseInt(e.target.value) || ''})}
             className="recipe-edit-input"
           />
 
@@ -60,6 +72,7 @@ export default function RecipeEdit({recipe}) {
             name='instructions'
             id="instructions"
             value={recipe.instructions}
+            onInput={e => handleChange({ instructions: e.target.value })}
             className="recipe-edit-input">
           </textarea>
       </div>

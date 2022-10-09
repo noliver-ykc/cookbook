@@ -10,6 +10,7 @@ function App() {
   // defined at the app level so both our edit and list functionalities can access state
 
   // load our values from local
+  const [selectedRecipeId, setSelectedRecipeId] = useState()
   const [recipes, setRecipes] = useState(() => {
     const recipeJSON = localStorage.getItem(LOCAL_STORAGE_KEY)
     if (recipeJSON == null) {
@@ -18,6 +19,7 @@ function App() {
       return JSON.parse(recipeJSON)
     }
   })
+  const selectedRecipe = recipes.find(recipe => recipe.id === selectedRecipeId)
   // save our values to local storage
   useEffect(() => {
    console.log("hello save")
@@ -28,8 +30,14 @@ function App() {
 
   const recipeContextValue = {
     handleRecipeAdd,
-    handleRecipeDelete
+    handleRecipeDelete,
+    handleRecipeSelect
   }
+
+  function handleRecipeSelect(id) {
+    setSelectedRecipeId(id)
+  }
+
   function handleRecipeAdd() {
     const newRecipe = {
       id: uuidv4(),
@@ -51,7 +59,8 @@ function App() {
   return (
     <RecipeContext.Provider value ={recipeContextValue}>
       <RecipeList recipes={recipes}/>
-      <RecipeEdit />
+      {/* this is a common version of a react ternary if statement */}
+      {selectedRecipe && <RecipeEdit recipe={selectedRecipe} />}
     </RecipeContext.Provider>
   )
 }

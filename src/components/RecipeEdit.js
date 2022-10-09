@@ -11,6 +11,12 @@ export default function RecipeEdit({recipe}) {
     // never alter props or state in react
     handleRecipeChange(recipe.id, { ...recipe, ...changes })
   }
+  function handleIngredientChange(id, ingredient ) {
+    const newIngredients = [...recipe.ingredients]
+    const index = newIngredients.findIndex(i => i.id === id)
+    newIngredients[index] = ingredient
+    handleChange({ingredients: newIngredients})
+  }
   return (
     <div className='recipe-edit'>
       <div className="rm-btn-container">
@@ -85,6 +91,7 @@ export default function RecipeEdit({recipe}) {
         {recipe.ingredients.map(ingredient => (
           <RecipeIngredientEdit
             key={ingredient.id}
+            handleIngredientChange={handleIngredientChange}
             ingredient={ingredient}
           />
         ))}

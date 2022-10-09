@@ -3,9 +3,15 @@ import React from 'react'
 export default function RecipeIngredientEdit() {
   return (
     <>
-      <input type="text" />
-      <input type="text" />
-      <button>&times;</button>
+      <input
+        className="recipe-edit-input"
+        type="text"
+      />
+      <input
+        className="recipe-edit-input"
+        type="text"
+      />
+      <button className="btn btn--danger">&times;</button>
     </>
   )
 }

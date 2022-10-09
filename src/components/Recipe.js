@@ -4,7 +4,7 @@ import { RecipeContext } from './App'
 
 export default function Recipe(props) {
   // using destructuring on line 3 will crowd the text, so placing in a variable here
-  const { handleRecipeDelete } = useContext(RecipeContext)
+  const { handleRecipeDelete, handleRecipeSelect} = useContext(RecipeContext)
   const {
     id,
     name,
@@ -19,7 +19,12 @@ export default function Recipe(props) {
       <div className="recipe-header">
         <h3 className='recipe-title'>{name}</h3>
         <div className="btns">
-          <button className='btn btn--primary mr-1'>Edit</button>
+          <button
+            className='btn btn--primary mr-1'
+            onClick={()=> handleRecipeSelect(id)}
+          >
+            Edit
+          </button>
           <button
             className='btn btn--danger'
             onClick={() => handleRecipeDelete(id)}

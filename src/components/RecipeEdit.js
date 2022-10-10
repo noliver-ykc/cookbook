@@ -12,7 +12,7 @@ export default function RecipeEdit({recipe}) {
     // never alter props or state in react
     handleRecipeChange(recipe.id, { ...recipe, ...changes })
   }
-  function handleIngredientChange(id, ingredient ) {
+  function handleIngredientChange(id, ingredient) {
     const newIngredients = [...recipe.ingredients]
     const index = newIngredients.findIndex(i => i.id === id)
     newIngredients[index] = ingredient
@@ -25,6 +25,12 @@ export default function RecipeEdit({recipe}) {
       amount: ''
     }
     handleChange({ingredients: [...recipe.ingredients, newIngredient]})
+  }
+
+  function handleIngredientDelete(id) {
+    // makes a new ingredient list containing everything that does not have the id of the selected ingredient
+    handleChange({ingredients: recipe.ingredients.filter(i => i.id !== id)})
+
   }
   return (
     <div className='recipe-edit'>
@@ -107,6 +113,7 @@ export default function RecipeEdit({recipe}) {
           <RecipeIngredientEdit
             key={ingredient.id}
             handleIngredientChange={handleIngredientChange}
+            handleIngredientDelete={handleIngredientDelete}
             ingredient={ingredient}
           />
         ))}

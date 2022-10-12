@@ -48,7 +48,7 @@ textarea.recipe-edit-input {
 .recipe-edit-ingredient-grid {
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(4, 0.5fr);
   margin-top: 20px;
   margin-left: 40px;
 }

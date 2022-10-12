@@ -32,8 +32,8 @@ export default function RecipeIngredientEdit(props) {
         <option value="tsp">tsp</option>
         <option value="tbsp">tbsp</option>
         <option value="ml">mL</option>
-        <option value="packet">packet(s)</option>
-        <option value="packet">whole</option>
+        <option value=" packet">packet(s)</option>
+        <option value=" whole">whole</option>
       </select>
 
       <button

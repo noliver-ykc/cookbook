@@ -1,6 +1,6 @@
-nst kabochaSoup = {
+const kabochaSoup = {
   Kabocha: 1200,
-  Butter: 2, 
+  Butter: 2,
   HeavyCream: 200
 }
 

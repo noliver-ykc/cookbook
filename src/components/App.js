@@ -3,8 +3,11 @@ import RecipeList from "./RecipeList";
 import { v4 as uuidv4 } from "uuid"; // for pushing out super unique id
 import "../css/app.css";
 import RecipeEdit from "./RecipeEdit";
+import ShoppingList from "./ShoppingList";
 
 export const RecipeContext = React.createContext();
+export const ShoppingListContext = React.createContext();
+
 const LOCAL_STORAGE_KEY = "cookingWithReact.recipes";
 function App() {
   // defined at the app level so both our edit and list functionalities can access state
@@ -22,6 +25,7 @@ function App() {
   const selectedRecipe = recipes.find(
     (recipe) => recipe.id === selectedRecipeId
   );
+  const shopping = "shoppingTempValNicole";
   // save our values to local storage
   useEffect(() => {
     console.log("hello save");
@@ -32,8 +36,10 @@ function App() {
     handleRecipeAdd,
     handleRecipeDelete,
     handleRecipeSelect,
-    handleRecipeChange,
+    handleRecipeChange
   };
+
+  const shoppingListContextValue = { handleShoppingListShow };
 
   function handleRecipeSelect(id) {
     setSelectedRecipeId(id);
@@ -46,7 +52,7 @@ function App() {
       servings: 1,
       cookTime: "",
       instructions: "",
-      ingredients: [{ id: uuidv4(), name: "", amount: "" }],
+      ingredients: [{ id: uuidv4(), name: "", amount: "", measurement: "" }],
     };
     setSelectedRecipeId(newRecipe.id);
     setRecipes([...recipes, newRecipe]);
@@ -67,6 +73,11 @@ function App() {
     setRecipes(newRecipes);
   }
 
+  function handleShoppingListShow() {
+    //do something
+    handleRecipeSelect(undefined);
+  }
+
   return (
     <>
       <div className="nav-menu">
@@ -74,8 +85,9 @@ function App() {
         <div className="shopping-list">
           <button
             className="shopping-list-btn btn--ghost btn"
-            onClick={console.log("hi")}
-            >View Shopping list</button>
+            onClick={() => handleShoppingListShow()}
+            >View Shopping list
+          </button>
         </div>
       </div>
 
@@ -84,6 +96,10 @@ function App() {
         {/* this is a common version of a react ternary if statement */}
         {selectedRecipe && <RecipeEdit recipe={selectedRecipe} />}
       </RecipeContext.Provider>
+      <ShoppingListContext.Provider value={shoppingListContextValue}>
+        <ShoppingList shopping={shopping} />
+          {/* if btn click is true then display */}
+      </ShoppingListContext.Provider>
     </>
 
   );

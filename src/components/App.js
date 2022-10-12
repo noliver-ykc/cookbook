@@ -68,11 +68,24 @@ function App() {
   }
 
   return (
-    <RecipeContext.Provider value={recipeContextValue}>
-      <RecipeList recipes={recipes} />
-      {/* this is a common version of a react ternary if statement */}
-      {selectedRecipe && <RecipeEdit recipe={selectedRecipe} />}
-    </RecipeContext.Provider>
+    <>
+      <div className="nav-menu">
+        <h1 className="appTitle">Party Menu Planner</h1>
+        <div className="shopping-list">
+          <button
+            className="shopping-list-btn btn--ghost btn"
+            onClick={console.log("hi")}
+            >View Shopping list</button>
+        </div>
+      </div>
+
+      <RecipeContext.Provider value={recipeContextValue}>
+        <RecipeList recipes={recipes} />
+        {/* this is a common version of a react ternary if statement */}
+        {selectedRecipe && <RecipeEdit recipe={selectedRecipe} />}
+      </RecipeContext.Provider>
+    </>
+
   );
 }
 

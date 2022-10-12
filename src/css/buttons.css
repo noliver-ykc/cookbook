@@ -11,10 +11,12 @@
 
 .btn--primary {
   color: white;
+  order: none;
   background-color: rgb(53, 164, 228);
 }
 
 .btn--primary:hover {
+  order: none;
   background-color: rgb(46, 141, 197);
 }
 
@@ -25,4 +27,14 @@
 
 .btn--danger:hover {
   background-color: rgb(210, 50, 22);
+}
+
+.btn--ghost {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  z-index: 10px;
+}
+.btn--ghost:hover {
+  border: 2px solid black;
 }

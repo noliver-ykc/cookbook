@@ -1,9 +1,9 @@
 .recipe-edit {
   padding: 30px;
-  padding-top: 10px;
+  /* padding-top: 80px; */
   position: fixed;
   right: 0;
-  top: 0;
+  top: 5%;
   width: 50%;
   max-height: 100%;
   overflow-y: auto;

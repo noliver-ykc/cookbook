@@ -1,10 +1,12 @@
 import React, { useContext } from 'react'
 import RecipeIngredientEdit from './RecipeIngredientEdit'
 import { RecipeContext } from './App'
-import { v4 as uuidv4 } from 'uuid';
+import { ShoppingListContext } from './App'
+import { v4 as uuidv4 } from 'uuid'
 
 export default function RecipeEdit({recipe}) {
-  const { handleRecipeChange, handleRecipeSelect } = useContext(RecipeContext)
+  const { handleRecipeChange, handleRecipeSelect } = useContext(RecipeContext);
+  const handleShoppingListShow  = useContext(ShoppingListContext);
 
   function handleChange(changes) {
     // taking everything from recipe and everything from changes but in a brand new obj
@@ -39,7 +41,8 @@ export default function RecipeEdit({recipe}) {
         <button
           className="btn recipe-edit-rm-btn"
           // changes selected recipe id to undefined and now no longer shows stuff
-          onClick={() => handleRecipeSelect(undefined)}
+          onClick={() => handleShoppingListShow(undefined)}
+          //onClick={() => handleRecipeSelect(undefined)}
         >
           &times;
         </button>

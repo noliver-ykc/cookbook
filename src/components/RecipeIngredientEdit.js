@@ -22,7 +22,6 @@ export default function RecipeIngredientEdit(props) {
         value={ingredient.amount}
       />
 
-      <label for="measurement"></label>
       <select
         name="measurement"
         id="measurement"

@@ -1,5 +1,6 @@
 import React from 'react'
-import Ingredient from './Ingredient'
+import IngredientList from "./IngredientList";
+import Recipe from './Recipe'
 
 export default function shopping({ingredients}) {
   const ingredientElements = ingredients.map
@@ -12,3 +13,7 @@ export default function shopping({ingredients}) {
     </div>
   )
 }
+
+// get every recipe
+// get the ingredients for every recipe and store in an array
+// iterate through array of objs and display data

@@ -36,7 +36,7 @@ function App() {
     handleRecipeAdd,
     handleRecipeDelete,
     handleRecipeSelect,
-    handleRecipeChange
+    handleRecipeChange,
   };
 
   const shoppingListContextValue = { handleShoppingListShow };
@@ -73,9 +73,18 @@ function App() {
     setRecipes(newRecipes);
   }
 
+  let shoppingBtnClicked = false;
+
   function handleShoppingListShow() {
-    //do something
     handleRecipeSelect(undefined);
+    shoppingBtnClicked = !shoppingBtnClicked;
+    if (shoppingBtnClicked) {
+      // displaylist
+      return true;
+    } else {
+      // hidelist
+      return false;
+    }
   }
 
   return (
@@ -86,7 +95,8 @@ function App() {
           <button
             className="shopping-list-btn btn--ghost btn"
             onClick={() => handleShoppingListShow()}
-            >View Shopping list
+          >
+            View Shopping list
           </button>
         </div>
       </div>
@@ -98,10 +108,10 @@ function App() {
       </RecipeContext.Provider>
       <ShoppingListContext.Provider value={shoppingListContextValue}>
         <ShoppingList shopping={shopping} />
-          {/* if btn click is true then display */}
+        {/* if btn click is true then display */}
+        {shoppingBtnClicked && <ShoppingList />}
       </ShoppingListContext.Provider>
     </>
-
   );
 }
 

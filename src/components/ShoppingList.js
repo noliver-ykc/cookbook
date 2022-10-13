@@ -8,7 +8,9 @@ export default function ShoppingList(props) {
 
   return (
     <>
-      <div>ShoppingList</div>
+      <div className="shopping-list-container">
+        ShoppingListNicole
+      </div>
     </>
 
   )

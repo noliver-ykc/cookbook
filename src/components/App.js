@@ -14,6 +14,7 @@ function App() {
 
   // load our values from local
   const [selectedRecipeId, setSelectedRecipeId] = useState();
+  //const [selectedRecipeId, setSelectedRecipeId] = useState();
   const [recipes, setRecipes] = useState(() => {
     const recipeJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (recipeJSON == null) {
@@ -28,7 +29,6 @@ function App() {
   const shopping = "shoppingTempValNicole";
   // save our values to local storage
   useEffect(() => {
-    console.log("hello save");
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes));
   }, [recipes]); // [] is a dependency, whenever the component stored in this array changes, the effect takes place
 
@@ -72,18 +72,16 @@ function App() {
     newRecipes[index] = recipe;
     setRecipes(newRecipes);
   }
-
-  let shoppingBtnClicked = false;
-
+  let shoppingBtnClicked = undefined;
   function handleShoppingListShow() {
     handleRecipeSelect(undefined);
-    shoppingBtnClicked = !shoppingBtnClicked;
+
     if (shoppingBtnClicked) {
       // displaylist
       return true;
     } else {
       // hidelist
-      return false;
+      return undefined;
     }
   }
 
@@ -109,7 +107,8 @@ function App() {
       <ShoppingListContext.Provider value={shoppingListContextValue}>
         <ShoppingList shopping={shopping} />
         {/* if btn click is true then display */}
-        {shoppingBtnClicked && <ShoppingList />}
+        <ShoppingList />
+        {/* {handleShoppingListShow && <ShoppingList />} */}
       </ShoppingListContext.Provider>
     </>
   );

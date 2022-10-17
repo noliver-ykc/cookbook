@@ -72,17 +72,12 @@ function App() {
     newRecipes[index] = recipe;
     setRecipes(newRecipes);
   }
-  let shoppingBtnClicked = undefined;
+  let shoppingBtnClicked = false;
   function handleShoppingListShow() {
     handleRecipeSelect(undefined);
-
-    if (shoppingBtnClicked) {
-      // displaylist
-      return true;
-    } else {
-      // hidelist
-      return undefined;
-    }
+    shoppingBtnClicked = !shoppingBtnClicked;
+    // return shoppingBtnClicked ? console.log(true) : console.log(false);
+    return shoppingBtnClicked ? alert(true) : alert(false);
   }
 
   return (
@@ -104,12 +99,10 @@ function App() {
         {/* this is a common version of a react ternary if statement */}
         {selectedRecipe && <RecipeEdit recipe={selectedRecipe} />}
       </RecipeContext.Provider>
-      <ShoppingListContext.Provider value={shoppingListContextValue}>
-        <ShoppingList shopping={shopping} />
-        {/* if btn click is true then display */}
-        <ShoppingList />
-        {/* {handleShoppingListShow && <ShoppingList />} */}
-      </ShoppingListContext.Provider>
+      {shoppingBtnClicked && <ShoppingList shopping={shopping} />}
+      {/* <ShoppingListContext.Provider value={shoppingListContextValue}>
+        {shoppingBtnClicked && <ShoppingList shopping={shopping} />}
+      </ShoppingListContext.Provider> */}
     </>
   );
 }

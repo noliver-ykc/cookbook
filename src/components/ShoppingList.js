@@ -32,7 +32,7 @@ export default function ShoppingList(props) {
   return (
     <>
       <div className="shopping-list-container">
-        ShoppingListNicole
+        <p>Shopping List</p>
         <p>{ingredientSum(ingredients)}</p>
       </div>
     </>
